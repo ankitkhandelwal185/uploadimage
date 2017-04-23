@@ -46,11 +46,7 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
     private TextView imagepath;
     private Bitmap bitmap;
     private int PICK_IMAGE_REQUEST = 1;
-    private String KEY_IMAGE = "image";
-    private String KEY_NAME = "name";
-    private String KEY_Desc = "desc";
-    private  String KEY_path = "image_path";
-    private String KEY_time = "time";
+
 
 
     @Override
@@ -78,7 +74,7 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
         return formattedDate;
     }
 
-    public String getStringImage(Bitmap bmp){
+    public String image_to_string(Bitmap bmp){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] imageBytes = baos.toByteArray();
@@ -96,6 +92,7 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
                         //Disimissing the progress dialog
                         loading.dismiss();
                         Log.e("UploadActivity","onResponce"+s);
+                        Toast.makeText(UpLoadActivity.this, ""+s, Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
@@ -109,18 +106,15 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 //Converting Bitmap to String
-                String image = getStringImage(bitmap);
-
-                //Getting Image Name
+                String image = image_to_string(bitmap);
                 String name = name_et.getText().toString().trim();
                 String desc = desc_et.getText().toString().trim();
 
-                //Creating parameters
                 Map<String,String> params = new Hashtable<String, String>();
 
                 //Adding parameters
-                params.put(KEY_IMAGE, image);
-                params.put(KEY_NAME, name);
+                params.put("image", image);
+                params.put("name", name);
                 params.put("desc",desc);
 
                 //returning parameters
