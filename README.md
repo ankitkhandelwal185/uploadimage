@@ -6,8 +6,7 @@ PHP server API's
      retrieve data from server api        http://iway.netai.net/getimage.php
      
 --------------------------------------------------------
-folder where all the images uploaded from mobile are stored 
-         http://iway.netai.net/uploads/
+
 --------------------------------------------------------
 
 --------------------------------------------------------
