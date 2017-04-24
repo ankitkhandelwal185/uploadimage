@@ -22,6 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +45,7 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
     ImageView image;
     TextView time_up, desc_, goback;
     private String Url= "http://iway.netai.net/getimage.php";
+    private String imageUrl = "http://iway.netai.net/uploads/";
     private ProgressDialog loading;
 
     @Override
@@ -59,7 +62,6 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
         retrieve.setOnClickListener(this);
         goback.setOnClickListener(this);
 
-
     }
 
     private void retrieve_image(){
@@ -67,6 +69,14 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
         loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
         String url = Url+"?name="+name.getText().toString();
+        //Loading Image from URL
+        Picasso.with(this)
+                .load(imageUrl+name.getText().toString()+".jpeg")
+                .placeholder(R.drawable.ic_home_black_24dp)   // optional
+                .error(R.drawable.ic_home_black_24dp)      // optional
+                .resize(800,800)                        // optional
+                .into(image);
+
         Log.e("retrieve","url"+url);
 
         StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
@@ -103,12 +113,17 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
         Log.e("retrieve",""+name+desc+time);
         time_up.setText("uploaded time is \n"+"\t\t\t\t"+time);
         time_up.setVisibility(View.VISIBLE);
         desc_.setText("Description \n"+"\t\t\t\t"+desc);
         desc_.setVisibility(View.VISIBLE);
     }
+
+
+
 
 
     @Override
