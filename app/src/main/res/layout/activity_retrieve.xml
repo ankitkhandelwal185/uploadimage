@@ -17,6 +17,14 @@
         android:hint="uploaded time"
         android:visibility="gone"
         android:layout_margin="15dp"/>
+    <TextView
+        android:id="@+id/desc_uploaded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="description"
+        android:visibility="gone"
+        android:layout_margin="15dp"/>
+
     <Button
         android:id="@+id/retrieve_btn"
         android:layout_width="match_parent"
