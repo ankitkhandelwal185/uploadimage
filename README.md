@@ -1,4 +1,4 @@
-Upload Images to server from your mobile and retrieve all information like when image was uploaded, description of that image.  
+Upload Images to server from your mobile and retrieve all information like when image was uploaded, description of that image and image.  
 --------------------------------------------------------
 PHP server API's
 
