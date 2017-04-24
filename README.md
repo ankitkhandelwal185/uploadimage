@@ -7,7 +7,7 @@ PHP server API's
      
 --------------------------------------------------------
 folder where all the images uploaded from mobile are stored 
-     http://iway.netai.net/uploads/
+         http://iway.netai.net/uploads/
 --------------------------------------------------------
 
 --------------------------------------------------------
