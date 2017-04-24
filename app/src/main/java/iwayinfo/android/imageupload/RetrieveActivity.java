@@ -74,7 +74,7 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
                 .load(imageUrl+name.getText().toString()+".jpeg")
                 .placeholder(R.drawable.ic_home_black_24dp)   // optional
                 .error(R.drawable.ic_home_black_24dp)      // optional
-                .resize(800,800)                        // optional
+                .resize(900,900)                        // optional
                 .into(image);
 
         Log.e("retrieve","url"+url);
