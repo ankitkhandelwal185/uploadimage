@@ -1,6 +1,7 @@
 package iwayinfo.android.imageupload;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -40,7 +41,7 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
     EditText name;
     Button retrieve;
     ImageView image;
-    TextView time_up, desc_;
+    TextView time_up, desc_, goback;
     private String Url= "http://iway.netai.net/getimage.php";
     private ProgressDialog loading;
 
@@ -54,15 +55,15 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
         desc_ = (TextView)findViewById(R.id.desc_uploaded);
         image = (ImageView)findViewById(R.id.imageview);
         retrieve = (Button)findViewById(R.id.retrieve_btn);
-
-
+        goback = (TextView)findViewById(R.id.goback);
         retrieve.setOnClickListener(this);
+        goback.setOnClickListener(this);
 
 
     }
 
     private void retrieve_image(){
-        
+
         loading = ProgressDialog.show(this,"Please wait...","Fetching...",false,false);
 
         String url = Url+"?name="+name.getText().toString();
@@ -103,7 +104,7 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
             e.printStackTrace();
         }
         Log.e("retrieve",""+name+desc+time);
-        time_up.setText("uploaded time is "+time);
+        time_up.setText("uploaded time is \n"+"\t\t\t\t"+time);
         time_up.setVisibility(View.VISIBLE);
         desc_.setText("Description \n"+"\t\t\t\t"+desc);
         desc_.setVisibility(View.VISIBLE);
@@ -115,5 +116,17 @@ public class RetrieveActivity extends AppCompatActivity implements View.OnClickL
         if(view==retrieve){
             retrieve_image();
         }
+        if(view==goback){
+            Intent intent = new Intent(RetrieveActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(RetrieveActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

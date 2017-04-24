@@ -43,7 +43,7 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
     private Button upload_btn, select_btn;
     private EditText desc_et, name_et;
     private String Url = "http://iway.netai.net/uploadimage.php";
-    private TextView imagepath;
+    private TextView imagepath,goback;
     private Bitmap bitmap;
     private int PICK_IMAGE_REQUEST = 1;
 
@@ -59,6 +59,8 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
         desc_et = (EditText)findViewById(R.id.upload_et);
         name_et = (EditText)findViewById(R.id.name_et);
         imagepath = (TextView) findViewById(R.id.imagepath);
+        goback = (TextView)findViewById(R.id.goback);
+        goback.setOnClickListener(this);
         upload_btn.setOnClickListener(this);
         select_btn.setOnClickListener(this);
 
@@ -160,7 +162,16 @@ public class UpLoadActivity extends AppCompatActivity implements View.OnClickLis
             intent.setType("image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        } else if(view==goback){
+            Intent intent = new Intent(UpLoadActivity.this, MainActivity.class);
+            startActivity(intent);
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(UpLoadActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

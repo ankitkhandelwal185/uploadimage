@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="name" />
+        android:hint="name of image that you have uploaded" />
 
     <TextView
         android:id="@+id/time_uploaded"
@@ -30,7 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Retrieve"
-        android:layout_margin="36dp"/>
+        android:layout_margin="15dp"/>
+    <TextView
+        android:id="@+id/goback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Go Back"/>
     <ImageView
         android:id="@+id/imageview"
         android:layout_width="match_parent"
